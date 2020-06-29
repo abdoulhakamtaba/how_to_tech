@@ -1,0 +1,40 @@
+{% extends 'baseBlog.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row" style="margin: 8px;">
+        <h3>This is the results of your search</h3>
+    </div>
+    <div class="row">
+        {% for post in queryset %}
+        <div class="post col-xl-6">
+            <div class="post-thumbnail"><a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" alt="..." class="img-fluid"></a></div>
+            <div class="post-details">
+            <div class="post-meta d-flex justify-content-between">
+                <div class="date meta-last">{{ post.postdate }}</div>
+                <div class="category">
+                {% for cat in post.category.all %}
+                <a href="#">{{cat}}</a>
+                {% endfor %}
+                </div>
+            </div><a href="{{ post.get_absolute_url }}">
+                <h3 class="h4">{{ post.title }}</h3></a>
+            <p class="text-muted">{{ post.overview_short }}...</p>
+            <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                <div class="avatar"><img src="{{ post.user.profile_picture.url }}" alt="..." class="img-fluid"></div>
+                <div class="title"><span>{{post.user}}</span></div></a>
+                <div class="date"><i class="icon-clock"></i> {{ post.postdate|timesince }} ago</div>
+                <div class="comments meta-last"><i class="icon-comment"></i>{{post.comment_count}}</div>
+            </footer>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %} 
