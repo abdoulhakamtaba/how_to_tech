@@ -51,7 +51,7 @@ daphne==2.5.0
 dask==2.5.2
 decorator==4.4.0
 defusedxml==0.6.0
-distributed==2.5.2
+distributed==2021.10.0
 Django==3.0.2
 django-allauth==0.41.0
 django-ckeditor==5.9.0
